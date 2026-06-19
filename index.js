@@ -308,7 +308,13 @@ for (row = 1; row <= gridRows; row++)
 //  ============================================================ */
 // ----- 21. Sum of squares -----
 // Add up 1² + 2² + ... + sqSumMax² (i * i each turn). Log the total.
-let sqSumMax = 3;
+
+let sqSumMax = 5;
+let sumTo = 0;
+for (i = 1; i <= sqSumMax; i++) {
+  sumTo = sumTo + i * i;
+}
+console.log(sumTo);
 // your code here
 // TEST 1:  sqSumMax = 3  ->  14    (1 + 4 + 9)
 // TEST 2:  sqSumMax = 1  ->  1
@@ -388,6 +394,7 @@ let numTriRows = 3;
    Gentle versions: peel digits, simple divide-down checks, and
    short string walks. No sign handling, no base-26, no DP.
    ============================================================ */
+
 // ----- E1. Sum of Digits -----
 // Given a non-negative integer sumDigN, add up its digits ONCE and log the total.
 // Hint: while sumDigN > 0 -> add (sumDigN % 10) to a total, then sumDigN = Math.floor(sumDigN / 10).
@@ -400,6 +407,7 @@ let sumDigN = 234;
 // EXAMPLE 3:  Input: sumDigN = 7     Output: 7
 //   Explanation: a single digit is its own sum.
 // ----- E2. Count the Digits -----
+
 // Given a non-negative integer countDigN, log how many digits it has.
 // Hint: while countDigN > 0 -> count++ and countDigN = Math.floor(countDigN / 10).
 let countDigN = 7384;
@@ -410,6 +418,7 @@ let countDigN = 7384;
 //   Explanation: the digits are 5 and 0.
 // EXAMPLE 3:  Input: countDigN = 9      Output: 1
 //   Explanation: one digit.
+
 // ----- E3. Subtract Product and Sum of Digits  (LeetCode 1281) -----
 // Compute (product of digits) - (sum of digits) for prodSumN and log it.
 // Hint: product starts at 1, sum starts at 0; peel digits with % 10 and Math.floor(/10).
@@ -418,9 +427,10 @@ let prodSUmN = 234;
 // EXAMPLE 1:  Input: prodSumN = 234    Output: 15
 //   Explanation: product 2×3×4 = 24, sum 2+3+4 = 9, 24 - 9 = 15.
 // EXAMPLE 2:  Input: prodSumN = 4421   Output: 21
-//   Explanation: product 4×4×2×1 = 32, sum 4+4+2+1 = 11, 32 - 11 = 21.
+//   Explanation: product 4×4×2×1 = 32, sum 4+4+2+1 = 11, 32 - 11 = 21.``
 // EXAMPLE 3:  Input: prodSumN = 9      Output: 0
 //   Explanation: product 9, sum 9, 9 - 9 = 0.
+
 // ----- E4. Reverse a Number (positive only) -----
 // Given a positive integer revPosN, log its digits reversed (no sign to worry about).
 // Hint: revResult = 0; while revPosN > 0 -> revResult = revResult * 10 + (revPosN % 10),
@@ -433,6 +443,7 @@ let revPosN = 123;
 //   Explanation: 120 reversed is 021; the leading zero drops, leaving 21.
 // EXAMPLE 3:  Input: revPosN = 5     Output: 5
 //   Explanation: one digit reversed is itself.
+
 // ----- E5. Largest Digit -----
 // Given a non-negative integer maxDigN, log its biggest single digit.
 // Hint: biggest = 0; peel each digit with % 10; if a digit is bigger, update biggest.
@@ -444,6 +455,7 @@ let maxDigN = 49072;
 //   Explanation: every digit is 1.
 // EXAMPLE 3:  Input: maxDigN = 5       Output: 5
 //   Explanation: the only digit is 5.
+
 // ----- E6. Power of Two  (LeetCode 231) -----
 // Given a positive integer powTwoN, log true if it is a power of 2 (1,2,4,8,...), else false.
 // Hint: while powTwoN % 2 === 0 -> powTwoN = powTwoN / 2; it is a power of 2 if it ends at exactly 1.
@@ -455,6 +467,7 @@ let powTwoN = 16;
 //   Explanation: 2⁰ = 1.
 // EXAMPLE 3:  Input: powTwoN = 6    Output: false
 //   Explanation: 6 = 2×3; the factor 3 means it is not a power of 2.
+
 // ----- E7. Number of 1 Bits  (LeetCode 191) -----
 // Given a non-negative integer oneBitsN, log how many 1s are in its binary form.
 // Hint: while oneBitsN > 0 -> add (oneBitsN % 2) to a count, then Math.floor(/2).
@@ -466,6 +479,7 @@ let oneBitsN = 11;
 //   Explanation: 8 in binary is 1000, which has one 1.
 // EXAMPLE 3:  Input: oneBitsN = 7    Output: 3
 //   Explanation: 7 in binary is 111, which has three 1s.
+
 // ----- E8. Sqrt(x) — integer part  (LeetCode 69) -----
 // Given a non-negative integer rootFloorN, log the integer part of its square root.
 // Hint: loop i = 1 upward while i * i <= rootFloorN; the answer is the last i that fit.
@@ -477,6 +491,7 @@ let rootFloorN = 8;
 //   Explanation: 4×4 = 16 exactly.
 // EXAMPLE 3:  Input: rootFloorN = 1    Output: 1
 //   Explanation: 1×1 = 1.
+
 // ----- E9. Valid Perfect Square  (LeetCode 367) -----
 // Given a positive integer perfSqN, log true if it is a perfect square, else false.
 // Hint: loop i = 1 upward; if i * i === perfSqN -> true; if i * i > perfSqN -> false, stop.
@@ -488,6 +503,7 @@ let perfSqN = 16;
 //   Explanation: 3×3=9 and 4×4=16; nothing squared equals 14.
 // EXAMPLE 3:  Input: perfSqN = 1    Output: true
 //   Explanation: 1×1 = 1.
+
 // ----- E10. Ugly Number  (LeetCode 263) -----
 // An ugly number is positive and its only prime factors are 2, 3, and 5.
 // Given uglyN, log true if ugly, else false.
@@ -500,6 +516,7 @@ let uglyN = 6;
 //   Explanation: 14 = 2 × 7; the factor 7 is not allowed.
 // EXAMPLE 3:  Input: uglyN = 1    Output: true
 //   Explanation: 1 has no prime factors, which counts as ugly.
+
 // ----- E11. Steps to Reduce a Number to Zero  (LeetCode 1342) -----
 // While stepsN > 0: if even -> stepsN = stepsN / 2, else -> stepsN -= 1. Count steps to reach 0.
 let stepsN = 14;
@@ -510,6 +527,7 @@ let stepsN = 14;
 //   Explanation: 8->4->2->1->0 = 4 steps.
 // EXAMPLE 3:  Input: stepsN = 123   Output: 12
 //   Explanation: it takes 12 even-halve / odd-subtract steps to reach 0.
+
 // ----- E12. Fizz Buzz  (LeetCode 412) -----
 // Loop 1..fizzN. Multiple of 3 -> "Fizz", of 5 -> "Buzz", both -> "FizzBuzz", else the number.
 let fizzN = 5;
@@ -520,6 +538,7 @@ let fizzN = 5;
 //   Explanation: only 3 is a multiple of 3.
 // EXAMPLE 3:  Input: fizzN = 15   Output: ... 14 FizzBuzz
 //   Explanation: 15 is a multiple of both 3 and 5, so "FizzBuzz".
+
 // ----- E13. Self Dividing Number  (LeetCode 728 lite) -----
 // A self-dividing number has NO zero digit and every digit divides the number evenly.
 // Given selfDivN, log true if self-dividing, else false.
@@ -532,6 +551,7 @@ let selfDivN = 128;
 //   Explanation: it contains a 0 digit, so it cannot be self-dividing.
 // EXAMPLE 3:  Input: selfDivN = 12    Output: true
 //   Explanation: 12 % 1 = 0 and 12 % 2 = 0.
+
 // ----- E14. Count Vowels in a String -----
 // Given a lowercase string vowelStr, log how many vowels (a, e, i, o, u) it has.
 // Hint: for each char, if "aeiou".includes(vowelStr[i]) -> count++.
