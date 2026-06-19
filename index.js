@@ -313,9 +313,17 @@ for (row = 1; row <= gridRows; row++)
 // Given an integer palinNum, log true if it reads the same forwards and
 // backwards, else false. Negative numbers are never palindromes.
 // Hint: rebuild the number reversed with % 10 and Math.floor(/10), compare.
-let palinNum = 121;
-// your code here
-
+let palinNum = 12121;
+let newNum = "";
+palinNum = String(palinNum);
+for (i = palinNum.length - 1; i >= 0; i--) {
+  newNum = newNum + palinNum.charAt(i);
+}
+if (palinNum === newNum) {
+  console.log("true");
+} else {
+  console.log("false");
+}
 // EXAMPLE 1:  Input: palinNum = 121    Output: true
 //   Explanation: reading 121 left-to-right and right-to-left both give 121.
 // EXAMPLE 2:  Input: palinNum = -121   Output: false
@@ -327,8 +335,14 @@ let palinNum = 121;
 // Given an integer revNum, log its digits reversed. Keep the sign.
 // Hint: track sign, work on the positive value, build revResult with % 10.
 let revNum = 123;
-// your code here
-
+let sign = revNum < 0 ? -1 : 1;
+revNum = Math.abs(revNum);
+let reversed = 0;
+while (revNum > 0) {
+  reversed = reversed * 10 + (revNum % 10);
+  revNum = Math.floor(revNum / 10);
+}
+console.log(reversed * sign);
 // EXAMPLE 1:  Input: revNum = 123    Output: 321
 //   Explanation: the digits 1-2-3 reversed are 3-2-1.
 // EXAMPLE 2:  Input: revNum = -123   Output: -321
@@ -341,7 +355,15 @@ let revNum = 123;
 // one digit remains, then log it. (Use a while loop INSIDE a while loop, or
 // loop until rootNum < 10.)
 let rootNum = 38;
-// your code here
+while (rootNum >= 10) {
+  let sum = 0;
+  while (rootNum > 0) {
+    sum += rootNum % 10;
+    rootNum = Math.floor(rootNum / 10);
+  }
+  rootNum = sum;
+}
+console.log(rootNum);
 
 // EXAMPLE 1:  Input: rootNum = 38   Output: 2
 //   Explanation: 3 + 8 = 11, then 1 + 1 = 2. 2 has one digit, so stop.
@@ -356,7 +378,17 @@ let rootNum = 38;
 // Hint (no arrays): an unhappy number always reaches 4 — loop while
 // happyNum !== 1 && happyNum !== 4.
 let happyNum = 19;
-// your code here
+while (happyNum !== 1 && happyNum !== 4) {
+  let sum = 0;
+  let temp = happyNum;
+  while (temp > 0) {
+    let digit = temp % 10;
+    sum += digit * digit;
+    temp = Math.floor(temp / 10);
+  }
+  happyNum = sum;
+}
+console.log(happyNum === 1);
 
 // EXAMPLE 1:  Input: happyNum = 19   Output: true
 //   Explanation: 1²+9²=82, 8²+2²=68, 6²+8²=100, 1²+0²+0²=1. Reached 1.
@@ -369,7 +401,12 @@ let happyNum = 19;
 // Given a non-negative integer bitsNum, log how many 1s are in its binary form.
 // Hint: while bitsNum > 0, add (bitsNum % 2) to a count, then Math.floor(/2).
 let bitsNum = 11;
-// your code here
+let cOunt = 0;
+while (bitsNum > 0) {
+  cOunt += bitsNum % 2;
+  bitsNum = Math.floor(bitsNum / 2);
+}
+console.log(cOunt);
 
 // EXAMPLE 1:  Input: bitsNum = 11    Output: 3
 //   Explanation: 11 in binary is 1011, which has three 1s.
@@ -382,7 +419,6 @@ let bitsNum = 11;
 // Given an integer powNum, log true if it is a power of 3 (3^0=1, 3^1=3, ...),
 // else false. Hint: while powNum % 3 === 0, divide it by 3; check if it ends at 1.
 let powNum = 27;
-// your code here
 
 // EXAMPLE 1:  Input: powNum = 27   Output: true
 //   Explanation: 27 = 3 × 3 × 3 = 3³, so it is a power of three.
@@ -396,7 +432,6 @@ let powNum = 27;
 // the LAST word. Hint: walk from the end — skip trailing spaces, then count
 // letters until the next space.
 let lastWordStr = "Hello World";
-// your code here
 
 // EXAMPLE 1:  Input: lastWordStr = "Hello World"    Output: 5
 //   Explanation: the last word is "World", which has 5 letters.
@@ -409,7 +444,6 @@ let lastWordStr = "Hello World";
 // Given a string palinStr, log true if it reads the same forwards and backwards.
 // Hint: two counters — left = 0, right = palinStr.length - 1 — move inward.
 let palinStr = "racecar";
-// your code here
 
 // EXAMPLE 1:  Input: palinStr = "racecar"   Output: true
 //   Explanation: reversed it is still "racecar".
@@ -422,7 +456,6 @@ let palinStr = "racecar";
 // You can climb 1 or 2 steps at a time. Given stairsNum steps, log how many
 // distinct ways to reach the top. (It is the Fibonacci pattern.)
 let stairsNum = 5;
-// your code here
 
 // EXAMPLE 1:  Input: stairsNum = 2   Output: 2
 //   Explanation: two ways — (1+1) or (2).
@@ -435,7 +468,6 @@ let stairsNum = 5;
 // Given a non-negative integer sqrtNum, log the integer part of its square root
 // (round down). Do NOT use Math.sqrt. Hint: loop i up while i * i <= sqrtNum.
 let sqrtNum = 8;
-// your code here
 
 // EXAMPLE 1:  Input: sqrtNum = 8    Output: 2
 //   Explanation: √8 ≈ 2.82; rounded down it is 2 (since 2×2=4 ≤ 8 < 3×3=9).
@@ -449,7 +481,6 @@ let sqrtNum = 8;
 // excelStr, log its column number. Hint: alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 // for each char, result = result * 26 + (alphabet.indexOf(char) + 1).
 let excelStr = "AB";
-// your code here
 
 // EXAMPLE 1:  Input: excelStr = "A"    Output: 1
 //   Explanation: A is the 1st column.
@@ -463,7 +494,6 @@ let excelStr = "AB";
 // Given uglyNum, log true if ugly, else false. Hint: while divisible by 2 -> /2,
 // then by 3, then by 5; ugly if you end at exactly 1.
 let uglyNum = 6;
-// your code here
 
 // EXAMPLE 1:  Input: uglyNum = 6    Output: true
 //   Explanation: 6 = 2 × 3; only the factors 2 and 3.
@@ -477,7 +507,6 @@ let uglyNum = 6;
 // Hint: it equals floor(zeroN/5) + floor(zeroN/25) + ... — loop dividing a
 // counter by 5 each turn and summing.
 let zeroN = 5;
-// your code here
 
 // EXAMPLE 1:  Input: zeroN = 5    Output: 1
 //   Explanation: 5! = 120, which ends in one zero.
@@ -490,7 +519,6 @@ let zeroN = 5;
 // While stepsNum > 0: if even -> stepsNum = stepsNum / 2, else -> stepsNum -= 1.
 // Count the steps to reach 0. Log the count.
 let stepsNum = 14;
-// your code here
 
 // EXAMPLE 1:  Input: stepsNum = 14    Output: 6
 //   Explanation: 14->7->6->3->2->1->0 = 6 steps (/2, -1, /2, -1, /2, -1).
@@ -503,7 +531,6 @@ let stepsNum = 14;
 // Given prodSumN, compute (product of its digits) - (sum of its digits) and log it.
 // Hint: product starts at 1, sum starts at 0; peel digits with % 10 and Math.floor(/10).
 let prodSumN = 234;
-// your code here
 
 // EXAMPLE 1:  Input: prodSumN = 234    Output: 15
 //   Explanation: product 2×3×4 = 24, sum 2+3+4 = 9, 24 - 9 = 15.
