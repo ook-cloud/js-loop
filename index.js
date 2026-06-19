@@ -83,7 +83,7 @@ for (i = 1; i <= 10; i++) {
 
 // ----- 6. Factorial -----
 // Multiply 1*2*...*`factN` with an accumulator starting at 1. Log the result.
-let factN = 3;
+let factN = 5;
 let factTotal = 1;
 for (let i = 1; i <= factN; i++) {
   factTotal *= i;
@@ -96,10 +96,12 @@ console.log(factTotal);
 
 // ----- 7. Count multiples -----
 // Count how many numbers from 1 to `multMax` are divisible by 3 (i % 3 === 0). Log the count.
-let multMax = 60;
-let divisible = 3;
-for (i = 3; i <= multMax; i++)
-  console.log("multMax" + "=" + multMax + "-" + (i % 3) === 0);
+let multMax = 50;
+let count = 0;
+for (i = 3; i <= multMax; i++) {
+  if (i % 3 === 0) count++;
+}
+console.log(count);
 
 // TEST 1:  multMax = 50  ->  16
 // TEST 2:  multMax = 10  ->  3
@@ -108,7 +110,17 @@ for (i = 3; i <= multMax; i++)
 // ----- 8. FizzBuzz (lite) -----
 // Loop 1 to `fizzMax`. Multiple of 3 -> "Fizz", of 5 -> "Buzz", both -> "FizzBuzz", else the number.
 let fizzMax = 20;
-// your code here
+for (let i = 1; i <= fizzMax; i++) {
+  if (i % 3 === 0 && i % 5 === 0) {
+    console.log("FizzBuzz");
+  } else if (i % 3 === 0) {
+    console.log("Fizz");
+  } else if (i % 5 === 0) {
+    console.log("Buzz");
+  } else {
+    console.log(i);
+  }
+}
 
 // TEST 1:  fizzMax = 5   ->  1 2 Fizz 4 Buzz
 // TEST 2:  fizzMax = 15  ->  1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz
@@ -121,7 +133,11 @@ let fizzMax = 20;
 // ----- 9. Halve it -----
 // While halveN > 1, log halveN then halve it: halveN = Math.floor(halveN / 2).
 let halveN = 100;
-// your code here
+
+while (halveN > 0) {
+  halveN = Math.floor(halveN / 2);
+  console.log("after halving", halveN);
+}
 
 // TEST 1:  halveN = 100  ->  50 25 12 6 3 1
 // TEST 2:  halveN = 16   ->  8 4 2 1
@@ -130,16 +146,23 @@ let halveN = 100;
 // ----- 10. Count the digits -----
 // Using digitN = Math.floor(digitN / 10) in a while loop, count the digits. Log the count. (Pure math.)
 let digitN = 7384;
-// your code here
-
+while (digitN > 0) {
+  digitN = Math.floor(digitN / 10);
+  console.log("Pure math", digitN);
+}
 // TEST 1:  digitN = 7384  ->  4
 // TEST 2:  digitN = 50    ->  2
 // TEST 3:  digitN = 9     ->  1
 
 // ----- 11. Sum of digits -----
 // Add last digit (sumDigitN % 10) to a total, then sumDigitN = Math.floor(sumDigitN / 10). While > 0. Log total.
-let sumDigitN = 1234;
-// your code here
+let sumDigitN = 999;
+let sumDigitTotal = 0;
+while (sumDigitN > 0) {
+  sumDigitTotal += sumDigitN % 10;
+  sumDigitN = Math.floor(sumDigitN / 10);
+}
+console.log(sumDigitTotal);
 
 // TEST 1:  sumDigitN = 1234  ->  10
 // TEST 2:  sumDigitN = 999   ->  27
@@ -150,8 +173,11 @@ let sumDigitN = 1234;
 // After the loop log "Found it: " + secretNum.
 let secretNum = 4;
 let guessNum = 1;
-// your code here
-
+while (guessNum !== secretNum) {
+  console.log("Trying " + guessNum);
+  guessNum++;
+}
+console.log("Found it: " + secretNum);
 // TEST 1:  secretNum = 4, guessNum = 1  ->  Trying 1 / Trying 2 / Trying 3, then  Found it: 4
 // TEST 2:  secretNum = 2, guessNum = 1  ->  Trying 1, then  Found it: 2
 // TEST 3:  secretNum = 1, guessNum = 1  ->  (no Trying), then  Found it: 1
@@ -163,7 +189,7 @@ let guessNum = 1;
 // ----- 13. Spell it out -----
 // Loop with spellWord[i] and log one letter per line.
 let spellWord = "hello";
-// your code here
+for (let i = 0; i < spellWord.length; i++) console.log(spellWord[i]);
 
 // TEST 1:  spellWord = "hello"  ->  h e l l o
 // TEST 2:  spellWord = "hi"     ->  h i
@@ -172,7 +198,11 @@ let spellWord = "hello";
 // ----- 14. Count a letter -----
 // Count how many times "a" appears in letterWord (if letterWord[i] === "a"). Log the count.
 let letterWord = "banana";
-// your code here
+coUnt = 0;
+for (let i = 0; i < letterWord.length; i++) {
+  if (letterWord[i] === "a") coUnt++;
+}
+console.log(coUnt);
 
 // TEST 1:  letterWord = "banana"  ->  3
 // TEST 2:  letterWord = "aaa"     ->  3
@@ -181,7 +211,11 @@ let letterWord = "banana";
 // ----- 15. Count the vowels -----
 // For each char, if "aeiou".includes(vowelText[i]) add to a counter. Log the count.
 let vowelText = "javascript";
-// your code here
+Count = 0;
+for (i = 0; i < vowelText.length; i++) {
+  if ("aeiou".includes(vowelText[i])) Count++;
+}
+console.log(Count);
 
 // TEST 1:  vowelText = "javascript"  ->  3
 // TEST 2:  vowelText = "aeiou"       ->  5
@@ -190,8 +224,11 @@ let vowelText = "javascript";
 // ----- 16. Reverse a string -----
 // reversedText = "". Loop and build backwards: reversedText = reverseWord[i] + reversedText. Log it.
 let reverseWord = "code";
-// your code here
-
+let reversedText = "";
+for (i = 0; i < reverseWord.length; i++) {
+  reversedText = reverseWord[i] + reversedText;
+}
+console.log(reversedText);
 // TEST 1:  reverseWord = "code"  ->  edoc
 // TEST 2:  reverseWord = "abc"   ->  cba
 // TEST 3:  reverseWord = "x"     ->  x
@@ -199,7 +236,13 @@ let reverseWord = "code";
 // ----- 17. Count the words -----
 // wordCount = 1. Each space (wordSentence[i] === " ") -> wordCount++. Log the count.
 let wordSentence = "the cat sat down";
-// your code here
+let wordCount = 1;
+for (let i = 0; i < wordSentence.length; i++) {
+  if (wordSentence[i] === " ") {
+    wordCount++;
+  }
+}
+console.log(wordCount);
 
 // TEST 1:  wordSentence = "the cat sat down"  ->  4
 // TEST 2:  wordSentence = "hello world"       ->  2
@@ -213,8 +256,17 @@ let wordSentence = "the cat sat down";
 // Loop digitText chars. When !isNaN(Number(digitText[i])) -> log "First digit: " + char and break.
 // If none found, log "No digits".
 let digitText = "abc4def";
-// your code here
-
+let foundDigit = false;
+for (let i = 0; i < digitText.length; i++) {
+  if (!isNaN(Number(digitText[i])) && digitText[i] !== " ") {
+    console.log("First digit: " + digitText[i]);
+    foundDigit = true;
+    break;
+  }
+}
+if (!foundDigit) {
+  console.log("No digits");
+}
 // TEST 1:  digitText = "abc4def"  ->  First digit: 4
 // TEST 2:  digitText = "a9b2"     ->  First digit: 9
 // TEST 3:  digitText = "abc"      ->  No digits
@@ -222,7 +274,17 @@ let digitText = "abc4def";
 // ----- 19. Is it prime? -----
 // Loop i from 2 to primeN-1. If primeN % i === 0 -> not prime, break. Log "Prime"/"Not prime".
 let primeN = 13;
-// your code here
+let isprime = true;
+for (let i = 2; i < primeN - 1; i++)
+  if (primeN % 1 === 0) {
+    isprime = false;
+    break;
+  }
+if (isprime) {
+  console.log("Prime");
+} else {
+  console.log("Not Prime");
+}
 
 // TEST 1:  primeN = 13  ->  Prime
 // TEST 2:  primeN = 15  ->  Not prime
@@ -232,7 +294,9 @@ let primeN = 13;
 // Loop row 1..gridRows, inside it loop col 1..gridCols. Log row + " x " + col + " = " + (row * col).
 let gridRows = 3;
 let gridCols = 3;
-// your code here
+for (row = 1; row <= gridRows; row++)
+  for (col = 1; col <= gridCols; col++)
+    console.log(row + " x " + col + " = " + row * col);
 
 // TEST 1:  gridRows = 3, gridCols = 3  ->  9 lines, last is  3 x 3 = 9
 // TEST 2:  gridRows = 2, gridCols = 2  ->  4 lines, last is  2 x 2 = 4
