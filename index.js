@@ -319,34 +319,60 @@ console.log(sumTo);
 // TEST 1:  sqSumMax = 3  ->  14    (1 + 4 + 9)
 // TEST 2:  sqSumMax = 1  ->  1
 // TEST 3:  sqSumMax = 5  ->  55    (1 + 4 + 9 + 16 + 25)
+
 // ----- 22. Sum of odd numbers -----
 // Add every ODD number from 1 to oddSumMax. Log the total.
 let oddSumMax = 10;
-// your code here
+let total = 0;
+for (i = 1; i <= oddSumMax; i++) {
+  if (i % 2 !== 0) {
+    total += i;
+  }
+}
+console.log(total);
 // TEST 1:  oddSumMax = 10  ->  25   (1 + 3 + 5 + 7 + 9)
 // TEST 2:  oddSumMax = 5   ->  9    (1 + 3 + 5)
 // TEST 3:  oddSumMax = 1   ->  1
+
 // ----- 23. First five multiples -----
 // Log the first 5 multiples of multBase, one per line (multBase x 1 .. x 5).
 let multBase = 3;
-// your code here
+for (i = 1; i <= 5; i++) {
+  console.log(multBase * i);
+}
 // TEST 1:  multBase = 3   ->  3 6 9 12 15
 // TEST 2:  multBase = 10  ->  10 20 30 40 50
 // TEST 3:  multBase = 1   ->  1 2 3 4 5
+
 // ----- 24. Count uppercase letters -----
 // Count how many UPPERCASE letters are in upWord. Log the count.
 // Hint: a letter is uppercase when upWord[i] === upWord[i].toUpperCase() (and it is a letter).
-let upWord = "HeLLo";
-// your code here
+const upWord = "HeLLo";
+let uppercaseCount = 0;
+for (let i = 0; i < upWord.length; i++) {
+  if (
+    upWord[i] === upWord[i].toUpperCase() &&
+    upWord[i] !== upWord[i].toLowerCase()
+  ) {
+    uppercaseCount++;
+  }
+}
+console.log(uppercaseCount);
+
 // TEST 1:  upWord = "HeLLo"  ->  3   (H, L, L)
 // TEST 2:  upWord = "abc"    ->  0
 // TEST 3:  upWord = "ABC"    ->  3
+
 // ----- 25. Repeat a string -----
 // Build a new string that is repWord repeated repTimes times. Log it.
 // Hint: result = ""; loop repTimes -> result = result + repWord.
 let repWord = "ab";
 let repTimes = 3;
-// your code here
+let result = "";
+for (let i = 0; i < repTimes; i++) {
+  result += repWord;
+}
+console.log(result);
 // TEST 1:  repWord = "ab", repTimes = 3  ->  ababab
 // TEST 2:  repWord = "x",  repTimes = 5  ->  xxxxx
 // TEST 3:  repWord = "hi", repTimes = 1  ->  hi
