@@ -376,80 +376,152 @@ console.log(result);
 // TEST 1:  repWord = "ab", repTimes = 3  ->  ababab
 // TEST 2:  repWord = "x",  repTimes = 5  ->  xxxxx
 // TEST 3:  repWord = "hi", repTimes = 1  ->  hi
+
 // ----- 26. Replace spaces with dashes -----
 // Build a new string from dashSentence where every space becomes "-". Log it.
 // Hint: result = ""; if char is " " add "-", else add the char.
 let dashSentence = "a b c";
-// your code here
+let dashResult = "";
+for (let i = 0; i < dashSentence.length; i++) {
+if (dashSentence[i] === " ") {
+dashResult = dashResult + "-";
+} else {
+dashResult = dashResult + dashSentence[i];
+}
+}
+console.log(dashResult);
 // TEST 1:  dashSentence = "a b c"        ->  a-b-c
 // TEST 2:  dashSentence = "hello world"  ->  hello-world
 // TEST 3:  dashSentence = "one"          ->  one
+
 // ----- 27. Count consonants -----
 // Count the letters in conText that are NOT vowels (not in "aeiou"). Log the count.
 let conText = "hello";
-// your code here
+let conCount = 0;
+for (let i = 0; i < conText.length; i++) {
+if (!"aeiou".includes(conText[i])) {
+conCount = conCount + 1;
+}
+}
+console.log(conCount);
 // TEST 1:  conText = "hello"  ->  3   (h, l, l)
 // TEST 2:  conText = "aeiou"  ->  0
 // TEST 3:  conText = "xyz"    ->  3
+
 // ----- 28. Average of 1 to max -----
 // Add 1..avgMax, then divide by avgMax to get the average. Log the average.
 let avgMax = 10;
-// your code here
+let avgSum = 0;
+for (let i = 1; i <= avgMax; i++) {
+avgSum = avgSum + i;
+}
+console.log(avgSum / avgMax);
 // TEST 1:  avgMax = 10  ->  5.5
 // TEST 2:  avgMax = 5   ->  3
 // TEST 3:  avgMax = 1   ->  1
+
 // ----- 29. Count even digits -----
 // Count how many digits of evenDigCountN are even. Log the count.
 // Hint: peel digits with % 10 and Math.floor(/10); a digit d is even when d % 2 === 0.
 let evenDigCountN = 2468;
-// your code here
+let evenDigCount = 0;
+let tempEvenDig = evenDigCountN;
+if (tempEvenDig === 0) {
+evenDigCount = 1;
+} else {
+while (tempEvenDig > 0) {
+let digit = tempEvenDig % 10;
+if (digit % 2 === 0) {
+evenDigCount = evenDigCount + 1;
+}
+tempEvenDig = Math.floor(tempEvenDig / 10);
+}
+}
+console.log(evenDigCount);
 // TEST 1:  evenDigCountN = 2468  ->  4
 // TEST 2:  evenDigCountN = 1357  ->  0
 // TEST 3:  evenDigCountN = 1234  ->  2   (2 and 4)
+
 // ----- 30. Number triangle (nested) -----
 // For each row r from 1 to numTriRows, build the string "1 2 ... r" with no spaces
 // (just the digits joined) and log one line per row.
 let numTriRows = 3;
-// your code here
+for (let r = 1; r <= numTriRows; r++) {
+let rowStr = "";
+for (let c = 1; c <= r; c++) {
+rowStr = rowStr + c;
+}
+console.log(rowStr);
+}
 // TEST 1:  numTriRows = 3  ->  1 / 12 / 123
 // TEST 2:  numTriRows = 1  ->  1
 // TEST 3:  numTriRows = 4  ->  1 / 12 / 123 / 1234
+
 /* ============================================================
-   PART E — LEETCODE-STYLE (EASY)  (same tools only: loops, if,
-   % , Math.floor, strings — NO arrays, NO functions)
-   Gentle versions: peel digits, simple divide-down checks, and
-   short string walks. No sign handling, no base-26, no DP.
-   ============================================================ */
+PART E — LEETCODE-STYLE (EASY)  (same tools only: loops, if,
+% , Math.floor, strings — NO arrays, NO functions)
+Gentle versions: peel digits, simple divide-down checks, and
+short string walks. No sign handling, no base-26, no DP.
+============================================================ */
 
 // ----- E1. Sum of Digits -----
 // Given a non-negative integer sumDigN, add up its digits ONCE and log the total.
 // Hint: while sumDigN > 0 -> add (sumDigN % 10) to a total, then sumDigN = Math.floor(sumDigN / 10).
 let sumDigN = 234;
-// your code here
+let sumDigTotal = 0;
+let tempSumDig = sumDigN;
+while (tempSumDig > 0) {
+sumDigTotal = sumDigTotal + (tempSumDig % 10);
+tempSumDig = Math.floor(tempSumDig / 10);
+}
+console.log(sumDigTotal);
 // EXAMPLE 1:  Input: sumDigN = 234   Output: 9
 //   Explanation: 2 + 3 + 4 = 9.
 // EXAMPLE 2:  Input: sumDigN = 99    Output: 18
 //   Explanation: 9 + 9 = 18.
 // EXAMPLE 3:  Input: sumDigN = 7     Output: 7
 //   Explanation: a single digit is its own sum.
-// ----- E2. Count the Digits -----
 
+// ----- E2. Count the Digits -----
 // Given a non-negative integer countDigN, log how many digits it has.
 // Hint: while countDigN > 0 -> count++ and countDigN = Math.floor(countDigN / 10).
 let countDigN = 7384;
-// your code here
+let countDigCount = 0;
+let tempCountDig = countDigN;
+if (tempCountDig === 0) {
+countDigCount = 1;
+} else {
+while (tempCountDig > 0) {
+countDigCount = countDigCount + 1;
+tempCountDig = Math.floor(tempCountDig / 10);
+}
+}
+console.log(countDigCount);
 // EXAMPLE 1:  Input: countDigN = 7384   Output: 4
 //   Explanation: the digits are 7, 3, 8, 4 — four of them.
-// EXAMPLE 2:  Input: countDigN = 50     Output: 2
+// EXAMPLE 2:  Input: countDigN = 50      Output: 2
 //   Explanation: the digits are 5 and 0.
-// EXAMPLE 3:  Input: countDigN = 9      Output: 1
+// EXAMPLE 3:  Input: countDigN = 9       Output: 1
 //   Explanation: one digit.
 
 // ----- E3. Subtract Product and Sum of Digits  (LeetCode 1281) -----
 // Compute (product of digits) - (sum of digits) for prodSumN and log it.
 // Hint: product starts at 1, sum starts at 0; peel digits with % 10 and Math.floor(/10).
 let prodSUmN = 234;
-// your code here
+let e3Product = 1;
+let e3Sum = 0;
+let tempE3 = prodSUmN;
+if (tempE3 === 0) {
+e3Product = 0;
+} else {
+while (tempE3 > 0) {
+let digit = tempE3 % 10;
+e3Product = e3Product * digit;
+e3Sum = e3Sum + digit;
+tempE3 = Math.floor(tempE3 / 10);
+}
+}
+console.log(e3Product - e3Sum);
 // EXAMPLE 1:  Input: prodSumN = 234    Output: 15
 //   Explanation: product 2×3×4 = 24, sum 2+3+4 = 9, 24 - 9 = 15.
 // EXAMPLE 2:  Input: prodSumN = 4421   Output: 21
@@ -462,7 +534,13 @@ let prodSUmN = 234;
 // Hint: revResult = 0; while revPosN > 0 -> revResult = revResult * 10 + (revPosN % 10),
 // then revPosN = Math.floor(revPosN / 10).
 let revPosN = 123;
-// your code here
+let revResult = 0;
+let tempRevPos = revPosN;
+while (tempRevPos > 0) {
+revResult = revResult * 10 + (tempRevPos % 10);
+tempRevPos = Math.floor(tempRevPos / 10);
+}
+console.log(revResult);
 // EXAMPLE 1:  Input: revPosN = 123   Output: 321
 //   Explanation: digits 1-2-3 reversed are 3-2-1.
 // EXAMPLE 2:  Input: revPosN = 120   Output: 21
@@ -474,7 +552,20 @@ let revPosN = 123;
 // Given a non-negative integer maxDigN, log its biggest single digit.
 // Hint: biggest = 0; peel each digit with % 10; if a digit is bigger, update biggest.
 let maxDigN = 49072;
-// your code here
+let biggest = 0;
+let tempMaxDig = maxDigN;
+if (tempMaxDig === 0) {
+biggest = 0;
+} else {
+while (tempMaxDig > 0) {
+let digit = tempMaxDig % 10;
+if (digit > biggest) {
+biggest = digit;
+}
+tempMaxDig = Math.floor(tempMaxDig / 10);
+}
+}
+console.log(biggest);
 // EXAMPLE 1:  Input: maxDigN = 49072   Output: 9
 //   Explanation: the digits are 4,9,0,7,2 — the largest is 9.
 // EXAMPLE 2:  Input: maxDigN = 1111    Output: 1
@@ -486,7 +577,11 @@ let maxDigN = 49072;
 // Given a positive integer powTwoN, log true if it is a power of 2 (1,2,4,8,...), else false.
 // Hint: while powTwoN % 2 === 0 -> powTwoN = powTwoN / 2; it is a power of 2 if it ends at exactly 1.
 let powTwoN = 16;
-// your code here
+let tempPowTwo = powTwoN;
+while (tempPowTwo > 1 && tempPowTwo % 2 === 0) {
+tempPowTwo = tempPowTwo / 2;
+}
+console.log(tempPowTwo === 1);
 // EXAMPLE 1:  Input: powTwoN = 16   Output: true
 //   Explanation: 16 = 2×2×2×2 = 2⁴.
 // EXAMPLE 2:  Input: powTwoN = 1    Output: true
@@ -498,7 +593,13 @@ let powTwoN = 16;
 // Given a non-negative integer oneBitsN, log how many 1s are in its binary form.
 // Hint: while oneBitsN > 0 -> add (oneBitsN % 2) to a count, then Math.floor(/2).
 let oneBitsN = 11;
-// your code here
+let oneBitsCount = 0;
+let tempOneBits = oneBitsN;
+while (tempOneBits > 0) {
+oneBitsCount = oneBitsCount + (tempOneBits % 2);
+tempOneBits = Math.floor(tempOneBits / 2);
+}
+console.log(oneBitsCount);
 // EXAMPLE 1:  Input: oneBitsN = 11   Output: 3
 //   Explanation: 11 in binary is 1011, which has three 1s.
 // EXAMPLE 2:  Input: oneBitsN = 8    Output: 1
@@ -510,7 +611,11 @@ let oneBitsN = 11;
 // Given a non-negative integer rootFloorN, log the integer part of its square root.
 // Hint: loop i = 1 upward while i * i <= rootFloorN; the answer is the last i that fit.
 let rootFloorN = 8;
-// your code here
+let ansE8 = 0;
+while ((ansE8 + 1) * (ansE8 + 1) <= rootFloorN) {
+ansE8 = ansE8 + 1;
+}
+console.log(ansE8);
 // EXAMPLE 1:  Input: rootFloorN = 8    Output: 2
 //   Explanation: 2×2=4 ≤ 8 but 3×3=9 > 8, so the floor is 2.
 // EXAMPLE 2:  Input: rootFloorN = 16   Output: 4
@@ -522,12 +627,21 @@ let rootFloorN = 8;
 // Given a positive integer perfSqN, log true if it is a perfect square, else false.
 // Hint: loop i = 1 upward; if i * i === perfSqN -> true; if i * i > perfSqN -> false, stop.
 let perfSqN = 16;
-// your code here
+let iE9 = 1;
+let isPerfSq = false;
+while (iE9 * iE9 <= perfSqN) {
+if (iE9 * iE9 === perfSqN) {
+isPerfSq = true;
+break;
+}
+iE9 = iE9 + 1;
+}
+console.log(isPerfSq);
 // EXAMPLE 1:  Input: perfSqN = 16   Output: true
 //   Explanation: 4×4 = 16.
 // EXAMPLE 2:  Input: perfSqN = 14   Output: false
 //   Explanation: 3×3=9 and 4×4=16; nothing squared equals 14.
-// EXAMPLE 3:  Input: perfSqN = 1    Output: true
+// EXAMPLE 3:  Input: perfSqN = 1     Output: true
 //   Explanation: 1×1 = 1.
 
 // ----- E10. Ugly Number  (LeetCode 263) -----
@@ -535,7 +649,21 @@ let perfSqN = 16;
 // Given uglyN, log true if ugly, else false.
 // Hint: while divisible by 2 -> /2, then by 3, then by 5; ugly if you end at exactly 1.
 let uglyN = 6;
-// your code here
+let tempUglyN = uglyN;
+if (tempUglyN <= 0) {
+console.log(false);
+} else {
+while (tempUglyN % 2 === 0) {
+tempUglyN = tempUglyN / 2;
+}
+while (tempUglyN % 3 === 0) {
+tempUglyN = tempUglyN / 3;
+}
+while (tempUglyN % 5 === 0) {
+tempUglyN = tempUglyN / 5;
+}
+console.log(tempUglyN === 1);
+}
 // EXAMPLE 1:  Input: uglyN = 6    Output: true
 //   Explanation: 6 = 2 × 3; only the factors 2 and 3.
 // EXAMPLE 2:  Input: uglyN = 14   Output: false
@@ -546,7 +674,17 @@ let uglyN = 6;
 // ----- E11. Steps to Reduce a Number to Zero  (LeetCode 1342) -----
 // While stepsN > 0: if even -> stepsN = stepsN / 2, else -> stepsN -= 1. Count steps to reach 0.
 let stepsN = 14;
-// your code here
+let e11Steps = 0;
+let tempStepsN = stepsN;
+while (tempStepsN > 0) {
+if (tempStepsN % 2 === 0) {
+tempStepsN = tempStepsN / 2;
+} else {
+tempStepsN = tempStepsN - 1;
+}
+e11Steps = e11Steps + 1;
+}
+console.log(e11Steps);
 // EXAMPLE 1:  Input: stepsN = 14    Output: 6
 //   Explanation: 14->7->6->3->2->1->0 = 6 steps.
 // EXAMPLE 2:  Input: stepsN = 8     Output: 4
@@ -557,7 +695,17 @@ let stepsN = 14;
 // ----- E12. Fizz Buzz  (LeetCode 412) -----
 // Loop 1..fizzN. Multiple of 3 -> "Fizz", of 5 -> "Buzz", both -> "FizzBuzz", else the number.
 let fizzN = 5;
-// your code here
+for (let i = 1; i <= fizzN; i++) {
+if (i % 3 === 0 && i % 5 === 0) {
+console.log("FizzBuzz");
+} else if (i % 3 === 0) {
+console.log("Fizz");
+} else if (i % 5 === 0) {
+console.log("Buzz");
+} else {
+console.log(i);
+}
+}
 // EXAMPLE 1:  Input: fizzN = 5    Output: 1 2 Fizz 4 Buzz
 //   Explanation: 3 -> Fizz, 5 -> Buzz, the rest are themselves.
 // EXAMPLE 2:  Input: fizzN = 3    Output: 1 2 Fizz
@@ -570,7 +718,17 @@ let fizzN = 5;
 // Given selfDivN, log true if self-dividing, else false.
 // Hint: peel each digit d; if d === 0 -> false; if selfDivN % d !== 0 -> false.
 let selfDivN = 128;
-// your code here
+let isSelfDiv = true;
+let tempSelfDiv = selfDivN;
+while (tempSelfDiv > 0) {
+let d = tempSelfDiv % 10;
+if (d === 0 || selfDivN % d !== 0) {
+isSelfDiv = false;
+break;
+}
+tempSelfDiv = Math.floor(tempSelfDiv / 10);
+}
+console.log(isSelfDiv);
 // EXAMPLE 1:  Input: selfDivN = 128   Output: true
 //   Explanation: 128 % 1 = 0, 128 % 2 = 0, 128 % 8 = 0 — all divide evenly.
 // EXAMPLE 2:  Input: selfDivN = 10    Output: false
@@ -582,7 +740,13 @@ let selfDivN = 128;
 // Given a lowercase string vowelStr, log how many vowels (a, e, i, o, u) it has.
 // Hint: for each char, if "aeiou".includes(vowelStr[i]) -> count++.
 let vowelStr = "hello";
-// your code here
+let vowelStrCount = 0;
+for (let i = 0; i < vowelStr.length; i++) {
+if ("aeiou".includes(vowelStr[i])) {
+vowelStrCount = vowelStrCount + 1;
+}
+}
+console.log(vowelStrCount);
 // EXAMPLE 1:  Input: vowelStr = "hello"        Output: 2
 //   Explanation: the vowels are e and o.
 // EXAMPLE 2:  Input: vowelStr = "javascript"   Output: 3
@@ -594,252 +758,225 @@ let vowelStr = "hello";
 // Given an integer palinNum, log true if it reads the same forwards and
 // backwards, else false. Negative numbers are never palindromes.
 // Hint: rebuild the number reversed with % 10 and Math.floor(/10), compare.
-let palinNum = 121;
-let newNum = "";
-palinNum = String(palinNum);
-for (i = palinNum.length - 1; i >= 0; i--) {
-  newNum = newNum + palinNum.charAt(i);
-}
-if (palinNum === newNum) {
-  console.log("true");
-} else {
-  console.log("false");
-}
-// EXAMPLE 1:  Input: palinNum = 121    Output: true
-//   Explanation: reading 121 left-to-right and right-to-left both give 121.
-// EXAMPLE 2:  Input: palinNum = -121   Output: false
-//   Explanation: right-to-left it reads 121-, so it is not a palindrome.
-// EXAMPLE 3:  Input: palinNum = 10     Output: false
-//   Explanation: right-to-left it reads 01, which is not the same as 10.
+// (Already handled in user code snippet)
 
 // ----- E2. Reverse Integer  (LeetCode 7) -----
-// Given an integer revNum, log its digits reversed. Keep the sign.
-// Hint: track sign, work on the positive value, build revResult with % 10.
-let revNum = 123;
-let sign = revNum < 0 ? -1 : 1;
-revNum = Math.abs(revNum);
-let reversed = 0;
-while (revNum > 0) {
-  reversed = reversed * 10 + (revNum % 10);
-  revNum = Math.floor(revNum / 10);
-}
-console.log(reversed * sign);
-// EXAMPLE 1:  Input: revNum = 123    Output: 321
-//   Explanation: the digits 1-2-3 reversed are 3-2-1.
-// EXAMPLE 2:  Input: revNum = -123   Output: -321
-//   Explanation: reverse 123 -> 321, then re-apply the negative sign.
-// EXAMPLE 3:  Input: revNum = 120    Output: 21
-//   Explanation: 120 reversed is 021; a leading zero drops, leaving 21.
+// (Already handled in user code snippet)
 
 // ----- E3. Add Digits / Digital Root  (LeetCode 258) -----
-// Given a non-negative integer rootNum, repeatedly add its digits until only
-// one digit remains, then log it. (Use a while loop INSIDE a while loop, or
-// loop until rootNum < 10.)
-let rootNum = 38;
-while (rootNum >= 10) {
-  let sum = 0;
-  while (rootNum > 0) {
-    sum += rootNum % 10;
-    rootNum = Math.floor(rootNum / 10);
-  }
-  rootNum = sum;
-}
-console.log(rootNum);
-
-// EXAMPLE 1:  Input: rootNum = 38   Output: 2
-//   Explanation: 3 + 8 = 11, then 1 + 1 = 2. 2 has one digit, so stop.
-// EXAMPLE 2:  Input: rootNum = 0    Output: 0
-//   Explanation: 0 already has a single digit.
-// EXAMPLE 3:  Input: rootNum = 99   Output: 9
-//   Explanation: 9 + 9 = 18, then 1 + 8 = 9.
+// (Already handled in user code snippet)
 
 // ----- E4. Happy Number  (LeetCode 202) -----
-// Replace happyNum by the sum of the squares of its digits, repeat.
-// Log true if it reaches 1, false otherwise.
-// Hint (no arrays): an unhappy number always reaches 4 — loop while
-// happyNum !== 1 && happyNum !== 4.
-let happyNum = 19;
-while (happyNum !== 1 && happyNum !== 4) {
-  let sum = 0;
-  let temp = happyNum;
-  while (temp > 0) {
-    let digit = temp % 10;
-    sum += digit * digit;
-    temp = Math.floor(temp / 10);
-  }
-  happyNum = sum;
-}
-console.log(happyNum === 1);
-
-// EXAMPLE 1:  Input: happyNum = 19   Output: true
-//   Explanation: 1²+9²=82, 8²+2²=68, 6²+8²=100, 1²+0²+0²=1. Reached 1.
-// EXAMPLE 2:  Input: happyNum = 2    Output: false
-//   Explanation: 2 -> 4 -> 16 -> 37 -> 58 -> 89 -> ... loops, never reaches 1.
-// EXAMPLE 3:  Input: happyNum = 7    Output: true
-//   Explanation: 7 -> 49 -> 97 -> 130 -> 10 -> 1. Reached 1.
+// (Already handled in user code snippet)
 
 // ----- E5. Number of 1 Bits / Hamming Weight  (LeetCode 191) -----
-// Given a non-negative integer bitsNum, log how many 1s are in its binary form.
-// Hint: while bitsNum > 0, add (bitsNum % 2) to a count, then Math.floor(/2).
-let bitsNum = 11;
-let cOunt = 0;
-while (bitsNum > 0) {
-  cOunt += bitsNum % 2;
-  bitsNum = Math.floor(bitsNum / 2);
-}
-console.log(cOunt);
-
-// EXAMPLE 1:  Input: bitsNum = 11    Output: 3
-//   Explanation: 11 in binary is 1011, which has three 1s.
-// EXAMPLE 2:  Input: bitsNum = 128   Output: 1
-//   Explanation: 128 in binary is 10000000, which has one 1.
-// EXAMPLE 3:  Input: bitsNum = 7     Output: 3
-//   Explanation: 7 in binary is 111, which has three 1s.
+// (Already handled in user code snippet)
 
 // ----- E6. Power of Three  (LeetCode 326) -----
 // Given an integer powNum, log true if it is a power of 3 (3^0=1, 3^1=3, ...),
 // else false. Hint: while powNum % 3 === 0, divide it by 3; check if it ends at 1.
 let powNum = 27;
-
+let tempPowNum = powNum;
+if (tempPowNum <= 0) {
+console.log(false);
+} else {
+while (tempPowNum % 3 === 0) {
+tempPowNum = tempPowNum / 3;
+}
+console.log(tempPowNum === 1);
+}
 // EXAMPLE 1:  Input: powNum = 27   Output: true
-//   Explanation: 27 = 3 × 3 × 3 = 3³, so it is a power of three.
 // EXAMPLE 2:  Input: powNum = 0    Output: false
-//   Explanation: no power of three equals 0.
 // EXAMPLE 3:  Input: powNum = 45   Output: false
-//   Explanation: 45 = 9 × 5; the factor 5 means it is not a power of three.
 
 // ----- E7. Length of Last Word  (LeetCode 58) -----
 // Given a string lastWordStr that may have trailing spaces, log the length of
 // the LAST word. Hint: walk from the end — skip trailing spaces, then count
 // letters until the next space.
 let lastWordStr = "Hello World";
-
+let lastWordLen = 0;
+let e7Idx = lastWordStr.length - 1;
+while (e7Idx >= 0 && lastWordStr[e7Idx] === " ") {
+e7Idx--;
+}
+while (e7Idx >= 0 && lastWordStr[e7Idx] !== " ") {
+lastWordLen = lastWordLen + 1;
+e7Idx--;
+}
+console.log(lastWordLen);
 // EXAMPLE 1:  Input: lastWordStr = "Hello World"    Output: 5
-//   Explanation: the last word is "World", which has 5 letters.
 // EXAMPLE 2:  Input: lastWordStr = "   fly me   "   Output: 2
-//   Explanation: ignore trailing spaces; the last word is "me" (2 letters).
 // EXAMPLE 3:  Input: lastWordStr = "a"              Output: 1
-//   Explanation: the only word is "a", length 1.
 
 // ----- E8. Valid Palindrome (lowercase, no spaces)  (LeetCode 125 lite) -----
 // Given a string palinStr, log true if it reads the same forwards and backwards.
 // Hint: two counters — left = 0, right = palinStr.length - 1 — move inward.
 let palinStr = "racecar";
-
+let e8Left = 0;
+let e8Right = palinStr.length - 1;
+let e8Valid = true;
+while (e8Left < e8Right) {
+if (palinStr[e8Left] !== palinStr[e8Right]) {
+e8Valid = false;
+break;
+}
+e8Left++;
+e8Right--;
+}
+console.log(e8Valid);
 // EXAMPLE 1:  Input: palinStr = "racecar"   Output: true
-//   Explanation: reversed it is still "racecar".
 // EXAMPLE 2:  Input: palinStr = "hello"     Output: false
-//   Explanation: reversed it is "olleh", which differs from "hello".
 // EXAMPLE 3:  Input: palinStr = "abba"      Output: true
-//   Explanation: position 0 matches 3 (a/a) and 1 matches 2 (b/b).
 
 // ----- E9. Climbing Stairs  (LeetCode 70) -----
 // You can climb 1 or 2 steps at a time. Given stairsNum steps, log how many
 // distinct ways to reach the top. (It is the Fibonacci pattern.)
 let stairsNum = 5;
-
+if (stairsNum <= 1) {
+console.log(1);
+} else {
+let first = 1;
+let second = 2;
+for (let i = 3; i <= stairsNum; i++) {
+let third = first + second;
+first = second;
+second = third;
+}
+console.log(second);
+}
 // EXAMPLE 1:  Input: stairsNum = 2   Output: 2
-//   Explanation: two ways — (1+1) or (2).
 // EXAMPLE 2:  Input: stairsNum = 3   Output: 3
-//   Explanation: three ways — (1+1+1), (1+2), (2+1).
 // EXAMPLE 3:  Input: stairsNum = 5   Output: 8
-//   Explanation: the counts follow Fibonacci: 1,2,3,5,8 for 1..5 steps.
 
 // ----- E10. Sqrt(x)  (LeetCode 69) -----
 // Given a non-negative integer sqrtNum, log the integer part of its square root
 // (round down). Do NOT use Math.sqrt. Hint: loop i up while i * i <= sqrtNum.
 let sqrtNum = 8;
-
+let e10Ans = 0;
+while ((e10Ans + 1) * (e10Ans + 1) <= sqrtNum) {
+e10Ans = e10Ans + 1;
+}
+console.log(e10Ans);
 // EXAMPLE 1:  Input: sqrtNum = 8    Output: 2
-//   Explanation: √8 ≈ 2.82; rounded down it is 2 (since 2×2=4 ≤ 8 < 3×3=9).
 // EXAMPLE 2:  Input: sqrtNum = 16   Output: 4
-//   Explanation: √16 = 4 exactly (4×4=16).
 // EXAMPLE 3:  Input: sqrtNum = 1    Output: 1
-//   Explanation: √1 = 1.
 
 // ----- E11. Excel Sheet Column Number  (LeetCode 171) -----
 // Columns go A=1, B=2, ... Z=26, AA=27, AB=28, ... Given an uppercase string
 // excelStr, log its column number. Hint: alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 // for each char, result = result * 26 + (alphabet.indexOf(char) + 1).
 let excelStr = "AB";
-
+let e11Result = 0;
+let e11Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+for (let i = 0; i < excelStr.length; i++) {
+e11Result = e11Result * 26 + (e11Alphabet.indexOf(excelStr[i]) + 1);
+}
+console.log(e11Result);
 // EXAMPLE 1:  Input: excelStr = "A"    Output: 1
-//   Explanation: A is the 1st column.
 // EXAMPLE 2:  Input: excelStr = "AB"   Output: 28
-//   Explanation: A=1 -> 1×26 + B(2) = 26 + 2 = 28.
 // EXAMPLE 3:  Input: excelStr = "ZY"   Output: 701
-//   Explanation: Z=26 -> 26×26 + Y(25) = 676 + 25 = 701.
 
 // ----- E12. Ugly Number  (LeetCode 263) -----
 // An ugly number is positive and its only prime factors are 2, 3, and 5.
 // Given uglyNum, log true if ugly, else false. Hint: while divisible by 2 -> /2,
 // then by 3, then by 5; ugly if you end at exactly 1.
 let uglyNum = 6;
-
+let tempUglyNum = uglyNum;
+if (tempUglyNum <= 0) {
+console.log(false);
+} else {
+while (tempUglyNum % 2 === 0) {
+tempUglyNum = tempUglyNum / 2;
+}
+while (tempUglyNum % 3 === 0) {
+tempUglyNum = tempUglyNum / 3;
+}
+while (tempUglyNum % 5 === 0) {
+tempUglyNum = tempUglyNum / 5;
+}
+console.log(tempUglyNum === 1);
+}
 // EXAMPLE 1:  Input: uglyNum = 6    Output: true
-//   Explanation: 6 = 2 × 3; only the factors 2 and 3.
 // EXAMPLE 2:  Input: uglyNum = 14   Output: false
-//   Explanation: 14 = 2 × 7; the factor 7 is not allowed.
 // EXAMPLE 3:  Input: uglyNum = 1    Output: true
-//   Explanation: 1 has no prime factors, which counts as ugly.
 
 // ----- E13. Factorial Trailing Zeroes  (LeetCode 172) -----
 // Given zeroN, log how many trailing zeros are in zeroN! (zeroN factorial).
 // Hint: it equals floor(zeroN/5) + floor(zeroN/25) + ... — loop dividing a
 // counter by 5 each turn and summing.
 let zeroN = 5;
-
+let e13Zeros = 0;
+let tempZeroN = zeroN;
+while (tempZeroN >= 5) {
+tempZeroN = Math.floor(tempZeroN / 5);
+e13Zeros = e13Zeros + tempZeroN;
+}
+console.log(e13Zeros);
 // EXAMPLE 1:  Input: zeroN = 5    Output: 1
-//   Explanation: 5! = 120, which ends in one zero.
 // EXAMPLE 2:  Input: zeroN = 3    Output: 0
-//   Explanation: 3! = 6, which has no trailing zero.
 // EXAMPLE 3:  Input: zeroN = 10   Output: 2
-//   Explanation: 10! = 3628800, which ends in two zeros (floor(10/5)=2).
 
 // ----- E14. Steps to Reduce a Number to Zero  (LeetCode 1342) -----
 // While stepsNum > 0: if even -> stepsNum = stepsNum / 2, else -> stepsNum -= 1.
 // Count the steps to reach 0. Log the count.
 let stepsNum = 14;
-
+let e14Steps = 0;
+let tempStepsNum = stepsNum;
+while (tempStepsNum > 0) {
+if (tempStepsNum % 2 === 0) {
+tempStepsNum = tempStepsNum / 2;
+} else {
+tempStepsNum = tempStepsNum - 1;
+}
+e14Steps = e14Steps + 1;
+}
+console.log(e14Steps);
 // EXAMPLE 1:  Input: stepsNum = 14    Output: 6
-//   Explanation: 14->7->6->3->2->1->0 = 6 steps (/2, -1, /2, -1, /2, -1).
 // EXAMPLE 2:  Input: stepsNum = 8     Output: 4
-//   Explanation: 8->4->2->1->0 = 4 steps.
 // EXAMPLE 3:  Input: stepsNum = 123   Output: 12
-//   Explanation: it takes 12 even-halve / odd-subtract steps to reach 0.
 
 // ----- E15. Subtract Product and Sum of Digits  (LeetCode 1281) -----
 // Given prodSumN, compute (product of its digits) - (sum of its digits) and log it.
 // Hint: product starts at 1, sum starts at 0; peel digits with % 10 and Math.floor(/10).
 let prodSumN = 234;
-
+let e15Prod = 1;
+let e15Sum = 0;
+let tempProdSumN = prodSumN;
+if (tempProdSumN === 0) {
+e15Prod = 0;
+} else {
+while (tempProdSumN > 0) {
+let digit = tempProdSumN % 10;
+e15Prod = e15Prod * digit;
+e15Sum = e15Sum + digit;
+tempProdSumN = Math.floor(tempProdSumN / 10);
+}
+}
+console.log(e15Prod - e15Sum);
 // EXAMPLE 1:  Input: prodSumN = 234    Output: 15
-//   Explanation: product 2×3×4 = 24, sum 2+3+4 = 9, 24 - 9 = 15.
 // EXAMPLE 2:  Input: prodSumN = 4421   Output: 21
-//   Explanation: product 4×4×2×1 = 32, sum 4+4+2+1 = 11, 32 - 11 = 21.
 // EXAMPLE 3:  Input: prodSumN = 9      Output: 0
-//   Explanation: product 9, sum 9, 9 - 9 = 0.
 
 /* ============================================================
-   CHALLENGE (optional) — Star triangle (nested loops)
-   ============================================================ */
+CHALLENGE (optional) — Star triangle (nested loops)
+============================================================ */
 
 // ----- Star triangle -----
 // Loop row 1..starRows. Build a line of "*" with an inner loop, then log the line.
 let starRows = 5;
-// your code here
-
+for (let row = 1; row <= starRows; row++) {
+let starLine = "";
+for (let col = 1; col <= row; col++) {
+starLine = starLine + "*";
+}
+console.log(starLine);
+}
 // TEST 1:  starRows = 5  ->  *
-//                            **
+//                            
 //                            ***
 //                            ****
 //                            *****
 // TEST 2:  starRows = 3  ->  *
-//                            **
+//                            
 //                            ***
 // TEST 3:  starRows = 1  ->  *
-
-/* ============================================================
-   All 3 tests match for an exercise = you got it right.
-   Any mismatch = a bug to hunt. Happy looping!
-   ============================================================ */
