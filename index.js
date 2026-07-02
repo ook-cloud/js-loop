@@ -1110,27 +1110,38 @@ console.log(hasKey({ a: 1 }, "a"));
 
 // ----- 6. Remove a key (mutate) -----
 // Write `removeKey(obj, key)` that deletes key from obj and RETURNS obj.
-// your code here
+function removeKey(obj, key) {
+  delete obj[key];
+  return obj;
+}
+console.log(removeKey({ a: 1, b: 2 }, "b"));
 
-// console.log(removeKey({ a: 1, b: 2 }, "b"));
 // TEST 1:  "b" in removeKey({ a: 1, b: 2 }, "b")  ->  false
 // TEST 2:  "a" in removeKey({ a: 1, b: 2 }, "b")  ->  true
 // TEST 3:  removeKey({ x: 9 }, "x").x             ->  undefined
 
 // ----- 7. Count the keys -----
 // Write `keyCount(obj)` that RETURNS how many keys obj has.
-// your code here
+function keyCount(obj) {
+  return Object.keys(obj).length;
+}
+console.log(keyCount({ a: 1, b: 2, c: 3 }));
 
-// console.log(keyCount({ a: 1, b: 2, c: 3 }));
 // TEST 1:  keyCount({ a: 1, b: 2, c: 3 })  ->  3
 // TEST 2:  keyCount({})                    ->  0
 // TEST 3:  keyCount({ only: true })        ->  1
 
 // ----- 8. Sum the values -----
 // Write `sumValues(obj)` (all values are numbers) that RETURNS their total.
-// your code here
+function sumValues(obj) {
+  let sum = 0;
+  for (let key in obj) {
+    sum += obj[key];
+  }
+  return sum;
+}
+console.log(sumValues({ a: 1, b: 2, c: 3 }));
 
-// console.log(sumValues({ a: 1, b: 2, c: 3 }));
 // TEST 1:  sumValues({ a: 1, b: 2, c: 3 })  ->  6
 // TEST 2:  sumValues({ x: 10, y: 5 })       ->  15
 // TEST 3:  sumValues({ only: 7 })           ->  7
@@ -1138,9 +1149,11 @@ console.log(hasKey({ a: 1 }, "a"));
 // ----- 9. Merge two objects (copy) -----
 // Write `merge(a, b)` that RETURNS a NEW object with both, b winning on
 // shared keys. Do not change a or b.
-// your code here
+function merge(a, b) {
+  return { ...a, ...b };
+}
+console.log(merge({ a: 1 }, { b: 2 }));
 
-// console.log(merge({ a: 1 }, { b: 2 }));
 // TEST 1:  merge({ a: 1 }, { b: 2 }).b         ->  2
 // TEST 2:  merge({ a: 1 }, { a: 9 }).a         ->  9
 // TEST 3:  keyCount(merge({ a: 1 }, { b: 2 })) ->  2
