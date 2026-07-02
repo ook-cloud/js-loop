@@ -1161,9 +1161,18 @@ console.log(merge({ a: 1 }, { b: 2 }));
 // ----- 10. Highest value key -----
 // Write `topKey(scores)` (values are numbers) that RETURNS the key with the
 // biggest value.
-// your code here
-
-// console.log(topKey({ sam: 5, ada: 9, bo: 3 }));
+function topKey(scores) {
+  let maxKey = null;
+  let maxValue = -Infinity;
+  for (let key in scores) {
+    if (scores[key] > maxValue) {
+      maxValue = scores[key];
+      maxKey = key;
+    }
+  }
+  return maxKey;
+}
+console.log(topKey({ sam: 5, ada: 9, bo: 3 }));
 // TEST 1:  topKey({ sam: 5, ada: 9, bo: 3 })  ->  "ada"
 // TEST 2:  topKey({ a: 1, b: 2 })             ->  "b"
 // TEST 3:  topKey({ only: 7 })                ->  "only"
@@ -1182,63 +1191,91 @@ console.log(merge({ a: 1 }, { b: 2 }));
 
 // ----- 1. First item -----
 // Write `firstItem(arr)` that RETURNS the item at index 0.
-// your code here
-
-// console.log(firstItem([10, 20, 30]));
+function firstItem(arr) {
+  return arr[0];
+}
+console.log(firstItem([10, 20, 30]));
 // TEST 1:  firstItem([10, 20, 30])  ->  10
 // TEST 2:  firstItem(["a", "b"])    ->  "a"
 // TEST 3:  firstItem([7])           ->  7
 
 // ----- 2. Sum all -----
 // Write `sumAll(arr)` (numbers) that RETURNS the total of every item.
-// your code here
+function sumAll(arr) {
+  let total = 0;
+  for (let i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+}
+console.log(sumAll([1, 2, 3, 4]));
 
-// console.log(sumAll([1, 2, 3, 4]));
 // TEST 1:  sumAll([1, 2, 3, 4])  ->  10
 // TEST 2:  sumAll([])            ->  0
 // TEST 3:  sumAll([5])           ->  5
 
 // ----- 3. Biggest number -----
 // Write `maxOf(arr)` (numbers) that RETURNS the largest item.
-// your code here
+function maxOf(arr) {
+  let max = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+  return max;
+}
+console.log(maxOf([3, 9, 5]));
 
-// console.log(maxOf([3, 9, 5]));
 // TEST 1:  maxOf([3, 9, 5])      ->  9
 // TEST 2:  maxOf([-1, -5, -2])   ->  -1
 // TEST 3:  maxOf([7])            ->  7
 
 // ----- 4. Count occurrences -----
 // Write `countOf(arr, target)` that RETURNS how many items equal target.
-// your code here
+function countOf(arr, target) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) {
+      count++;
+    }
+  }
+  return count;
+}
 
-// console.log(countOf([1, 2, 2, 3, 2], 2));
+console.log(countOf([1, 2, 2, 3, 2], 2));
 // TEST 1:  countOf([1, 2, 2, 3, 2], 2)        ->  3
 // TEST 2:  countOf(["a", "b", "a"], "a")      ->  2
 // TEST 3:  countOf([1, 2, 3], 9)              ->  0
 
 // ----- 5. Add to end -----
 // Write `append(arr, item)` that pushes item and RETURNS arr.
-// your code here
-
-// console.log(append([1, 2], 3));
+function append(arr, item) {
+  arr.push(item);
+  return arr;
+}
+console.log(append([1, 2], 3));
 // TEST 1:  append([1, 2], 3)          ->  [1, 2, 3]
 // TEST 2:  append([], "hi").length    ->  1
 // TEST 3:  append(["a"], "b")         ->  ["a", "b"]
 
 // ----- 6. Remove first -----
 // Write `removeFirst(arr)` that shifts off the first item and RETURNS arr.
-// your code here
-
-// console.log(removeFirst([1, 2, 3]));
+function removeFirst(arr) {
+  arr.shift();
+  return arr;
+}
+console.log(removeFirst([1, 2, 3]));
 // TEST 1:  removeFirst([1, 2, 3])        ->  [2, 3]
 // TEST 2:  removeFirst([9]).length       ->  0
 // TEST 3:  removeFirst(["a", "b", "c"])  ->  ["b", "c"]
 
 // ----- 7. Contains -----
 // Write `contains(arr, item)` that RETURNS true when item is in arr.
-// your code here
-
-// console.log(contains(["cat", "dog"], "dog"));
+function contains(arr, item) {
+  return arr.includes(item);
+}
+console.log(contains(["cat", "dog"], "dog"));
 // TEST 1:  contains(["cat", "dog"], "dog")   ->  true
 // TEST 2:  contains([1, 2, 3], 9)            ->  false
 // TEST 3:  contains([], "x")                 ->  false
