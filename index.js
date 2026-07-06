@@ -1487,9 +1487,16 @@ console.log(tokenize("3 + 4"));
 // ----- 8. calcOne -----
 // Write `calcOne(expr)` for a 3-token expression like "3 + 4". Tokenize it,
 // turn the two ends into numbers, and RETURN applyOp(left, op, right).
-// your code here
 
-// console.log(calcOne("3 + 4"));
+function calcOne(expr) {
+  let tokens = tokenize(expr);
+  let left = Number(tokens[0]);
+  let op = tokens[1];
+  let right = Number(tokens[2]);
+  return applyOp(left, op, right);
+}
+console.log(calcOne("3 + 4"));
+
 // TEST 1:  calcOne("3 + 4")    ->  7
 // TEST 2:  calcOne("10 / 0")   ->  "Error"
 // TEST 3:  calcOne("6 * 7")    ->  42
@@ -1503,9 +1510,24 @@ console.log(tokenize("3 + 4"));
 // applyOp. RETURN the final number. (No operator precedence â€” strictly left
 // to right, exactly how a basic phone calculator works.)
 // If any step returns "Error", RETURN "Error".
-// your code here
+function calculate(expr) {
+  let tokens = tokenize(expr);
+  let result = Number(tokens[0]);
 
-// console.log(calculate("8 - 2 + 1"));
+  for (let i = 1; i < tokens.length; i += 2) {
+    let op = tokens[i];
+    let nextNum = Number(tokens[i + 1]);
+
+    result = applyOp(result, op, nextNum);
+
+    if (result === "Error") {
+      return "Error";
+    }
+  }
+  return result;
+}
+console.log(calculate("8 - 2 + 1"));
+
 // TEST 1:  calculate("8 - 2 + 1")   ->  7
 // TEST 2:  calculate("2 * 3 * 4")   ->  24
 // TEST 3:  calculate("10 / 0 + 5")  ->  "Error"
@@ -1515,9 +1537,11 @@ console.log(tokenize("3 + 4"));
 // ----- 10. round2 (money-friendly display) -----
 // Floating point makes 0.1 + 0.2 ugly. Write `round2(n)` that RETURNS n
 // rounded to 2 decimal places as a NUMBER. (Math.round(n * 100) / 100.)
-// your code here
+function round2(n) {
+  return Math.round(n * 100) / 100;
+}
+console.log(round2(5.005));
 
-// console.log(round2(5.005));
 // TEST 1:  round2(5.005)        ->  5.01
 // TEST 2:  round2(3)            ->  3
 // TEST 3:  round2(2.71828)      ->  2.72
@@ -1525,9 +1549,11 @@ console.log(tokenize("3 + 4"));
 // ----- 11. percent -----
 // The % key on a calculator turns a number into its fraction of 100.
 // Write `percent(n)` that RETURNS n / 100.
-// your code here
+function percent(n) {
+  return n / 100;
+}
+console.log(percent(50));
 
-// console.log(percent(50));
 // TEST 1:  percent(50)   ->  0.5
 // TEST 2:  percent(200)  ->  2
 // TEST 3:  percent(0)    ->  0
@@ -1535,9 +1561,11 @@ console.log(tokenize("3 + 4"));
 // ----- 12. clearToZero (the C button) -----
 // Pressing Clear resets the display. Write `clearToZero()` (no input) that
 // RETURNS the number 0 â€” the calculator's starting state.
-// your code here
+function clearToZero() {
+  return 0;
+}
+console.log(clearToZero());
 
-// console.log(clearToZero());
 // TEST 1:  clearToZero()        ->  0
 // TEST 2:  typeof clearToZero() ->  "number"
 // TEST 3:  clearToZero() + 5    ->  5
