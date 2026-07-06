@@ -1060,7 +1060,7 @@ console.log(maxTwo(3, 9));
 function makeBook() {
   return { title: "Dune", pages: 412 };
 }
-console.log(makeBook());
+console.log(makeBook().title);
 
 // TEST 1:  makeBook().title       ->  "Dune"
 // TEST 2:  makeBook().pages       ->  412
@@ -1093,7 +1093,7 @@ function setPrice(item, price) {
   item.price = price;
   return item;
 }
-console.log(setPrice({ name: "pen" }, 3));
+console.log(setPrice({ name: "pen" }, 3).price);
 // TEST 1:  setPrice({ name: "pen" }, 3).price  ->  3
 // TEST 2:  setPrice({ price: 1 }, 9).price     ->  9
 // TEST 3:  setPrice({ name: "x" }, 0).price    ->  0
@@ -1282,9 +1282,17 @@ console.log(contains(["cat", "dog"], "dog"));
 
 // ----- 8. Count even numbers -----
 // Write `countEven(arr)` (numbers) that RETURNS how many items are even.
-// your code here
+function countEven(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      count++;
+    }
+  }
+  return count;
+}
 
-// console.log(countEven([1, 2, 3, 4, 6]));
+console.log(countEven([1, 2, 3, 4, 6]));
 // TEST 1:  countEven([1, 2, 3, 4, 6])  ->  3
 // TEST 2:  countEven([1, 3, 5])        ->  0
 // TEST 3:  countEven([2, 4])           ->  2
@@ -1292,18 +1300,34 @@ console.log(contains(["cat", "dog"], "dog"));
 // ----- 9. Join with dashes -----
 // Write `dashJoin(arr)` that RETURNS the items joined into one string with
 // "-" between them, built with a loop. dashJoin(["a","b","c"]) -> "a-b-c".
-// your code here
 
-// console.log(dashJoin(["a", "b", "c"]));
+function dashJoin(arr) {
+  if (arr.length === 0) {
+    return "";
+  }
+  let result = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    result = result + "-" + arr[i];
+  }
+  return result;
+}
+console.log(dashJoin(["a", "b", "c"]));
+
 // TEST 1:  dashJoin(["a", "b", "c"])  ->  "a-b-c"
 // TEST 2:  dashJoin(["one"])          ->  "one"
 // TEST 3:  dashJoin([1, 2])           ->  "1-2"
 
 // ----- 10. Average -----
 // Write `average(arr)` (numbers) that RETURNS the mean of the items.
-// your code here
+function average(arr) {
+  let sum = 0;
+  for (let num of arr) {
+    sum += num;
+  }
+  return sum / arr.length;
+}
+console.log(average([2, 4, 6]));
 
-// console.log(average([2, 4, 6]));
 // TEST 1:  average([2, 4, 6])    ->  4
 // TEST 2:  average([10, 20])     ->  15
 // TEST 3:  average([5])          ->  5
@@ -1311,9 +1335,11 @@ console.log(contains(["cat", "dog"], "dog"));
 // ----- 11. Reverse into a new array -----
 // Write `reverseArr(arr)` that RETURNS a NEW array with the items reversed.
 // Do not change the original.
-// your code here
-
-// console.log(reverseArr([1, 2, 3]));
+function reverseArr(arr) {
+  let newArr = [];
+  for (let i = arr.leght - 1; i >= 0; i++);
+}
+console.log(reverseArr([1, 2, 3]));
 // TEST 1:  reverseArr([1, 2, 3])        ->  [3, 2, 1]
 // TEST 2:  reverseArr(["a", "b"])       ->  ["b", "a"]
 // TEST 3:  reverseArr([7])              ->  [7]
@@ -1321,9 +1347,16 @@ console.log(contains(["cat", "dog"], "dog"));
 // ----- 12. Only the evens (build a new array) -----
 // Write `evensOnly(arr)` that RETURNS a NEW array with only the even numbers,
 // in the same order.
-// your code here
-
-// console.log(evensOnly([1, 2, 3, 4, 5, 6]));
+function evensOnly(arr) {
+  let evens = [];
+  for (let num of arr) {
+    if (num % 2 === 0) {
+      evens.push(num);
+    }
+  }
+  return evens;
+}
+console.log(evensOnly([1, 2, 3, 4, 5, 6]));
 // TEST 1:  evensOnly([1, 2, 3, 4, 5, 6])  ->  [2, 4, 6]
 // TEST 2:  evensOnly([1, 3, 5])           ->  []
 // TEST 3:  evensOnly([2, 4])              ->  [2, 4]
@@ -1350,17 +1383,22 @@ console.log(contains(["cat", "dog"], "dog"));
 
 // ----- 1. add -----
 // Write `add(a, b)` that RETURNS a + b.
-// your code here
+function add(a, b) {
+  return a + b;
+}
+console.log(add(2, 3));
 
-// console.log(add(2, 3));
+// console.log(add(10, 20));
 // TEST 1:  add(2, 3)    ->  5
 // TEST 2:  add(-1, 1)   ->  0
 // TEST 3:  add(10, 0)   ->  10
 
 // ----- 2. subtract -----
 // Write `subtract(a, b)` that RETURNS a - b.
-// your code here
-
+function subtract(a, b) {
+  return a - b;
+}
+console.log(subtract(5, 3));
 // console.log(subtract(5, 3));
 // TEST 1:  subtract(5, 3)   ->  2
 // TEST 2:  subtract(0, 4)   ->  -4
@@ -1368,7 +1406,11 @@ console.log(contains(["cat", "dog"], "dog"));
 
 // ----- 3. multiply -----
 // Write `multiply(a, b)` that RETURNS a * b.
-// your code here
+
+function multiply(a, b) {
+  return a * b;
+}
+console.log(multiply(4, 3));
 
 // console.log(multiply(4, 3));
 // TEST 1:  multiply(4, 3)   ->  12
@@ -1378,9 +1420,15 @@ console.log(contains(["cat", "dog"], "dog"));
 // ----- 4. divide (guard the zero) -----
 // Write `divide(a, b)` that RETURNS a / b â€” BUT a real calculator must not
 // crash on divide-by-zero. When b is 0, RETURN the string "Error".
-// your code here
 
-// console.log(divide(10, 2));
+function divide(a, b) {
+  if (b === 0) {
+    return "Error";
+  }
+  return a / b;
+}
+console.log(divide(10, 2));
+
 // TEST 1:  divide(10, 2)   ->  5
 // TEST 2:  divide(7, 0)    ->  "Error"
 // TEST 3:  divide(9, 3)    ->  3
@@ -1390,9 +1438,12 @@ console.log(contains(["cat", "dog"], "dog"));
 // ----- 5. isOperator -----
 // Write `isOperator(token)` that RETURNS true when token is one of
 // "+", "-", "*", "/".
-// your code here
 
-// console.log(isOperator("+"));
+function isOperator(token) {
+  return token === "+" || token === "-" || token === "*" || token === "/";
+}
+console.log(isOperator("9"));
+
 // TEST 1:  isOperator("+")  ->  true
 // TEST 2:  isOperator("/")  ->  true
 // TEST 3:  isOperator("9")  ->  false
@@ -1403,9 +1454,16 @@ console.log(contains(["cat", "dog"], "dog"));
 // Write `applyOp(a, op, b)` that looks at op and RETURNS the right result by
 // CALLING add / subtract / multiply / divide. If op is not a known operator,
 // RETURN "Error".
-// your code here
 
-// console.log(applyOp(6, "*", 7));
+function applyOp(a, op, b) {
+  if (op === "+") return add(a, b);
+  if (op === "-") return subtract(a, b);
+  if (op === "*") return multiply(a, b);
+  if (op === "/") return divide(a, b);
+  return "Error";
+}
+console.log(applyOp(6, "*", 7));
+
 // TEST 1:  applyOp(6, "*", 7)   ->  42
 // TEST 2:  applyOp(8, "/", 0)   ->  "Error"
 // TEST 3:  applyOp(10, "?", 2)  ->  "Error"
@@ -1415,9 +1473,11 @@ console.log(contains(["cat", "dog"], "dog"));
 // ----- 7. tokenize -----
 // A calculator gets a flat string like "3 + 4". Write `tokenize(expr)` that
 // RETURNS an array of its pieces split on spaces: ["3", "+", "4"].
-// your code here
 
-// console.log(tokenize("3 + 4"));
+function tokenize(expr) {
+  return expr.split(" ");
+}
+console.log(tokenize("3 + 4"));
 // TEST 1:  tokenize("3 + 4")        ->  ["3", "+", "4"]
 // TEST 2:  tokenize("12 * 5")       ->  ["12", "*", "5"]
 // TEST 3:  tokenize("8 - 2 + 1")    ->  ["8", "-", "2", "+", "1"]
