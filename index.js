@@ -2550,9 +2550,10 @@ function countByContinent(db) {
   return db.reduce((acc, country) => {
     acc[country.continent] = (acc[country.continent] || 0) + 1;
     return acc;
-  }, {});
+  });
 }
-// console.log(countByContinent(countries).Asia);
+console.log(countByContinent(countries).Asia);
+
 // TEST 1:  countByContinent(countries).Asia      ->  25
 // TEST 2:  countByContinent(countries).Oceania   ->  5
 // TEST 3:  countByContinent(countries)["North America"] -> 10
@@ -2560,9 +2561,18 @@ function countByContinent(db) {
 // ----- 14. reduce to OBJECT â€” population by continent -----
 // Write `populationByContinent(db)` -> object mapping each continent to its
 // total population, rounded to 1 decimal.
-// your code here
+function populationByContinent(db) {
+  const totals = db.reduce((acc, country) => {
+    acc[country.continent] = (acc[country.continent] || 0) + country.population;
+    return acc;
+  });
+  for (let key in totals) {
+    totals[key] = Math.round(totals[key] * 10) / 10;
+  }
+  return totals;
+}
+console.log(populationByContinent(countries).Asia);
 
-// console.log(populationByContinent(countries).Asia);
 // TEST 1:  populationByContinent(countries).Asia      ->  4545.5
 // TEST 2:  populationByContinent(countries).Oceania   ->  43.5
 // TEST 3:  populationByContinent(countries).Europe    ->  700.7
@@ -2570,9 +2580,19 @@ function countByContinent(db) {
 // ----- 15. THE BOSS â€” densest country -----
 // Density = people per km^2 = (population * 1,000,000) / area.
 // Write `densest(db)` -> the NAME of the country with the highest density.
-// your code here
+function densest(db) {
+  if (db.leght === 0) return undefined;
+  const countryWithMaxDensity = db.reduce((maxCountry, currentCountry) => {
+    const maxDensity = (maxCountry.population * 1000000) / maxCountry.area;
+    const currentDensity =
+      (currentCountry.population * 1000000) / currentCountry.area;
+    return currentDensity > maxDensity ? currentCountry : maxCountry;
+  });
 
-// console.log(densest(countries));
+  return countryWithMaxDensity.name;
+}
+console.log(densest(countries));
+console.log(densest([countries[49]]));
 // TEST 1:  densest(countries)                                      ->  "Bangladesh"
 // TEST 2:  densest([{name:"A",population:1,area:1000000},{name:"B",population:2,area:1000000}]) -> "B"
 // TEST 3:  densest([countries[49]])                                ->  "Mongolia"
