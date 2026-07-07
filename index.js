@@ -2409,46 +2409,53 @@ const countries = [
    ============================================================ */
 
 // ----- 1. Count them (WORKED EXAMPLE) -----
-// function countCountries(db) {
-//   return db.length;
-// }
-// console.log(countCountries(countries));
+function countCountries(db) {
+  return db.length;
+}
+console.log(countCountries(countries));
 // TEST 1:  countCountries(countries)        ->  100
 // TEST 2:  countCountries([])               ->  0
 // TEST 3:  countCountries([countries[0]])   ->  1
 
 // ----- 2. map â€” every name -----
 // Write `allNames(db)` -> array of just the name strings.
-// your code here
-
-// console.log(allNames(countries)[0]);
+function allNames(db) {
+  return db.map((country) => country.name);
+}
+console.log(allNames(countries)[0]);
 // TEST 1:  allNames(countries)[0]       ->  "Nigeria"
 // TEST 2:  allNames(countries)[99]      ->  "Solomon Islands"
 // TEST 3:  allNames(countries).length   ->  100
 
 // ----- 3. map â€” every capital -----
 // Write `allCapitals(db)` -> array of just the capital strings.
-// your code here
+function allCapitals(db) {
+  return db.map((country) => country.capital);
+}
+console.log(allCapitals(countries)[0]);
 
-// console.log(allCapitals(countries)[0]);
 // TEST 1:  allCapitals(countries)[0]      ->  "Abuja"
 // TEST 2:  allCapitals(countries).length  ->  100
 // TEST 3:  allCapitals([countries[25]])[0] -> "Beijing"
 
 // ----- 4. filter â€” by continent -----
 // Write `byContinent(db, continent)` -> array of countries on that continent.
-// your code here
+function byContinent(db, continent) {
+  return db.filter((country) => country.continent === continent);
+}
+console.log(byContinent(countries, "Asia").length);
 
-// console.log(byContinent(countries, "Asia").length);
 // TEST 1:  byContinent(countries, "Asia").length      ->  25
 // TEST 2:  byContinent(countries, "Oceania").length   ->  5
 // TEST 3:  byContinent(countries, "Antarctica").length -> 0
 
 // ----- 5. filter â€” boolean field -----
 // Write `landlockedOnly(db)` -> array of countries where landlocked is true.
-// your code here
+function landlockedOnly(db) {
+  return db.filter((country) => country.landlocked);
+}
+console.log(landlockedOnly(countries).length);
 
-// console.log(landlockedOnly(countries).length);
 // TEST 1:  landlockedOnly(countries).length                       ->  21
 // TEST 2:  landlockedOnly(countries).every(x => x.landlocked)     ->  true
 // TEST 3:  landlockedOnly([countries[0]]).length                  ->  0
