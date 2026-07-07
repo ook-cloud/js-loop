@@ -2462,27 +2462,34 @@ console.log(landlockedOnly(countries).length);
 
 // ----- 6. filter â€” numeric threshold -----
 // Write `biggerThan(db, millions)` -> countries with population > millions.
-// your code here
+function biggerThan(db, millions) {
+  return db.filter((country) => country.population > millions);
+}
+console.log(biggerThan(countries, 100).length);
 
-// console.log(biggerThan(countries, 100).length);
 // TEST 1:  biggerThan(countries, 100).length   ->  15
 // TEST 2:  biggerThan(countries, 200).length   ->  7
 // TEST 3:  biggerThan(countries, 5000).length  ->  0
 
 // ----- 7. find â€” one country by name -----
 // Write `findByName(db, name)` -> the single country object, or undefined.
-// your code here
+function findByName(db, name) {
+  return db.find((country) => country.name === name);
+}
+console.log(findByName(countries, "Japan").capital);
 
-// console.log(findByName(countries, "Japan").capital);
 // TEST 1:  findByName(countries, "Japan").capital      ->  "Tokyo"
 // TEST 2:  findByName(countries, "Brazil").population   ->  216.4
 // TEST 3:  findByName(countries, "Atlantis")            ->  undefined
 
 // ----- 8. reduce â€” total population -----
 // Write `totalPopulation(db)` -> sum of every population, rounded to 1 decimal.
-// your code here
+function totalPopulation(db) {
+  const total = db.reduce((sum, country) => sum + country.population, 0);
+  return Math.round(total * 10) / 10;
+}
+console.log(totalPopulation(countries));
 
-// console.log(totalPopulation(countries));
 // TEST 1:  totalPopulation(countries)              ->  7554.1
 // TEST 2:  totalPopulation([])                     ->  0
 // TEST 3:  totalPopulation([{population: 10}, {population: 5}]) -> 15
