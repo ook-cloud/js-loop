@@ -2580,6 +2580,7 @@ console.log(populationByContinent(countries).Asia);
 // ----- 15. THE BOSS â€” densest country -----
 // Density = people per km^2 = (population * 1,000,000) / area.
 // Write `densest(db)` -> the NAME of the country with the highest density.
+
 function densest(db) {
   if (db.leght === 0) return undefined;
   const countryWithMaxDensity = db.reduce((maxCountry, currentCountry) => {
@@ -2588,7 +2589,6 @@ function densest(db) {
       (currentCountry.population * 1000000) / currentCountry.area;
     return currentDensity > maxDensity ? currentCountry : maxCountry;
   });
-
   return countryWithMaxDensity.name;
 }
 console.log(densest(countries));
